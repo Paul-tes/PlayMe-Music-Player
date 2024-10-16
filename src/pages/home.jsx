@@ -1,19 +1,13 @@
 import SearchBar from "../components/SearchBar";
-import Song from "../components/Song";
+import { useSelector } from "react-redux";
+import SongList from "../components/SongList";
 
 function Home() {
+  const { songs } = useSelector((state) => state.songs);
   return(
     <>
     <SearchBar />
-      <div className='carousel carousel-end rounded-box gap-4 w-4/5 mt-6 m-auto'>
-        <Song />
-        <Song/>
-        <Song/>
-        <Song/>
-        <Song/>
-        <Song/>
-        <Song/>
-      </div>
+    <SongList songs={songs}/>
     </>
   );
 }

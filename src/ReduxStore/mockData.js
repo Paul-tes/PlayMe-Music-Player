@@ -2,31 +2,37 @@ const  songList = [
   {
     id: 1,
     name: 'Song One',
-    description: 'First song',
+    description: 'A short description for  First song',
     genre: 'Pop' 
   },
   {
     id: 2,
     name: 'Song Two',
-    description: 'Second song',
+    description: 'A short description for  Second song',
     genre: 'Rock'
   },
   {
     id: 3,
     name: 'Song Three',
-    description: 'Second song',
+    description: 'A short description for  Second song',
     genre: 'Rock'
   },
   {
     id: 4,
     name: 'Song Four',
-    description: 'Second song',
+    description: 'A short description for  Second song',
     genre: 'Rock'
   },
   {
     id: 5,
     name: 'Song Five',
-    description: 'Second song',
+    description: 'A short description for  Second song',
+    genre: 'Rock'
+  },
+  {
+    id: 6,
+    name: 'Song Six',
+    description: 'A short description for  Second song',
     genre: 'Rock'
   },
 ]

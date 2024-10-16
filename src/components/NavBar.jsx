@@ -1,17 +1,21 @@
+import { Link } from "react-router-dom"
+
+
 function NavBar() {
   return (
     <div className="navbar bg-base-100">
-      <div className="flex-1">
+      <div className="flex-1 gap-4">
         <a>
           <img
-            src="../../public/PlayMeLogo.png"
+            src="/PlayMeLogo.png"
             alt="PlayMe Logo"
             className="w-28 h-20 btn btn-ghost hover:bg-transparent"
           />
         </a>
-        <a className="btn btn-ghost text-sm">Home</a>
-        <a className="btn btn-ghost text-sm">Permium</a>
-        <a className="btn btn-ghost text-sm">Contact</a>
+        <Link to="/" className="btn btn-ghost text-sm">Home</Link>
+        <Link to="/create" className="btn btn-outline text-sm">Add Music</Link>
+        <Link to="/permium" className="btn btn-ghost text-sm">Permium</Link>
+        <Link to="/contact" className="btn btn-ghost text-sm">Contact</Link>
       </div>
       <div className="flex-none">
         <button className="btn btn-ghost btn-circle">
