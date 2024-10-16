@@ -1,3 +1,7 @@
+import { FaGooglePlay } from "react-icons/fa6";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import { FaEdit } from "react-icons/fa";
+
 function Song() {
   return(
     <div className="card bg-base-100 image-full w-56 shadow-xl carousel-item">
@@ -8,9 +12,10 @@ function Song() {
       </figure>
       <div className="card-body">
         <h2 className="card-title">Song</h2>
-        <p>If a dog chews shoes whose shoes does he choose?</p>
-        <div className="card-actions justify-end">
-          <button className="btn btn-secondary">Play Now</button>
+        <div className="card-action flex gap-2">
+          <button className="btn btn-outline"><FaGooglePlay /></button>
+          <button className="btn btn-outline btn-accent"><FaEdit /></button>
+          <button className="btn btn-outline btn-error"><RiDeleteBin5Fill /></button>
         </div>
       </div>
     </div>
