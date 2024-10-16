@@ -1,6 +1,6 @@
 function Song() {
   return(
-    <div className="card bg-base-100 image-full w-96 shadow-xl">
+    <div className="card bg-base-100 image-full w-56 shadow-xl carousel-item">
       <figure>
         <img
           src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -10,7 +10,7 @@ function Song() {
         <h2 className="card-title">Song</h2>
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Play Now</button>
+          <button className="btn btn-secondary">Play Now</button>
         </div>
       </div>
     </div>

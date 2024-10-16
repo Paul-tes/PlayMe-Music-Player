@@ -7,13 +7,14 @@ function App() {
     <div className='flex flex-col gap-2'>
       <NavBar />
       <SearchBar />
-      <div className='carousel carousel-center rounded-box  space-x-4 p-4'>
-        <Song  className='carousel-item' />
-        <Song className='carousel-item' />
-        <Song className='carousel-item' />
-        <Song className='carousel-item' />
-        <Song className='carousel-item' />
-        
+      <div className='carousel carousel-end rounded-box gap-4 w-4/5 mt-6 m-auto'>
+        <Song />
+        <Song/>
+        <Song/>
+        <Song/>
+        <Song/>
+        <Song/>
+        <Song/>
       </div>
     </div>
   )
