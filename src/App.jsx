@@ -5,6 +5,7 @@ import CreateMusic from './pages/createMusics'
 import UpdateMusic from './pages/updateMusic'
 import Permium from './pages/permium'
 import Contact from './pages/contact'
+import Player from './components/Player'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/permium' element={<Permium />} />
           <Route path='/contact' element={<Contact />} />
         </Routes>
+        <Player />
       </BrowserRouter>
     </div>
   )

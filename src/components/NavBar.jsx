@@ -5,14 +5,13 @@ function NavBar() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1 gap-4">
-        <a>
+        <Link to="/">
           <img
             src="/PlayMeLogo.png"
             alt="PlayMe Logo"
             className="w-28 h-20 btn btn-ghost hover:bg-transparent"
           />
-        </a>
-        <Link to="/" className="btn btn-ghost text-sm">Home</Link>
+        </Link>
         <Link to="/create" className="btn btn-outline text-sm">Add Music</Link>
         <Link to="/permium" className="btn btn-ghost text-sm">Permium</Link>
         <Link to="/contact" className="btn btn-ghost text-sm">Contact</Link>
