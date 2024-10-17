@@ -3,28 +3,34 @@ import {
   fetchSongsRequest,
   fetchSongsSuccess,
   fetchSongsFailure,
-  addSong,
-  updateSong,
+  addSongRequest,
+  addSongSuccess,
+  addSongFailure,
+  updateSongRequest,
+  updateSongSuccess,
+  updateSongFailure,
   deleteSong
 } from './SongSlice';
 
+const BASE_URL = 'https://play-me-api.vercel.app/api/songs';
+
 // API calls
-const fetchSongsApi = () => fetch('https://play-me-api.vercel.app/api/songs').then(res => res.json());
-const addSongApi = (song) => fetch('https://play-me-api.vercel.app/api/songs', {
+const fetchSongsApi = () => fetch(BASE_URL).then(res => res.json());
+const addSongApi = (song) => fetch(BASE_URL, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(song)
 }).then(res => res.json());
-const updateSongApi = (id, song) => fetch(`https://play-me-api.vercel.app/api/songs/${id}`, {
+const updateSongApi = (id, song) => fetch(`${BASE_URL}/${id}`, {
   method: 'PUT',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(song)
 }).then(res => res.json());
-const deleteSongApi = (id) => fetch(`https://play-me-api.vercel.app/api/songs/${id}`, {
+const deleteSongApi = (id) => fetch(`${BASE_URL}/${id}`, {
   method: 'DELETE'
 }).then(res => res.json());
 
-// Worker saga: will be fired on fetchSongsRequest actions
+// Worker saga for fetching songs
 function* fetchSongs() {
   try {
     const songs = yield call(fetchSongsApi);
@@ -36,12 +42,11 @@ function* fetchSongs() {
 
 // Worker saga for adding a song
 function* handleAddSong(action) {
-  const newSong = action.payload;
   try {
-    const song = yield call(addSongApi, newSong);
-    yield put(addSong(song));
+    const newSong = yield call(addSongApi, action.payload);
+    yield put(addSongSuccess(newSong));
   } catch (error) {
-    console.error(error);
+    yield put(addSongFailure(error.message));
   }
 }
 
@@ -50,9 +55,9 @@ function* handleUpdateSong(action) {
   const { id, updatedSong } = action.payload;
   try {
     const song = yield call(updateSongApi, id, updatedSong);
-    yield put(updateSong({ id, updatedSong: song }));
+    yield put(updateSongSuccess({ id, updatedSong: song }));
   } catch (error) {
-    console.error(error);
+    yield put(updateSongFailure(error.message));
   }
 }
 
@@ -70,7 +75,7 @@ function* handleDeleteSong(action) {
 // Watcher saga
 export function* songSaga() {
   yield takeEvery(fetchSongsRequest.type, fetchSongs);
-  yield takeEvery(addSong.type, handleAddSong);
-  yield takeEvery(updateSong.type, handleUpdateSong);
+  yield takeEvery(addSongRequest.type, handleAddSong);
+  yield takeEvery(updateSongRequest.type, handleUpdateSong);
   yield takeEvery(deleteSong.type, handleDeleteSong);
 }

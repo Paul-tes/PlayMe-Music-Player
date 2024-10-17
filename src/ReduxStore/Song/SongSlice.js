@@ -20,15 +20,33 @@ export const SongSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    addSong: (state, action) => {
+    addSongRequest: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    addSongSuccess: (state, action) => {
+      state.isLoading = false;
       state.songs.push(action.payload);
     },
-    updateSong: (state, action) => {
+    addSongFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    updateSongRequest: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    updateSongSuccess: (state, action) => {
+      state.isLoading = false;
       const { id, updatedSong } = action.payload;
       const index = state.songs.findIndex(song => song.id === id);
       if (index !== -1) {
         state.songs[index] = { ...state.songs[index], ...updatedSong };
       }
+    },
+    updateSongFailure: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
     },
     deleteSong: (state, action) => {
       const { id } = action.payload;
@@ -42,8 +60,12 @@ export const {
   fetchSongsRequest,
   fetchSongsSuccess,
   fetchSongsFailure,
-  addSong,
-  updateSong,
+  addSongRequest,
+  addSongSuccess,
+  addSongFailure,
+  updateSongRequest,
+  updateSongSuccess,
+  updateSongFailure,
   deleteSong
 } = SongSlice.actions;
 
